@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{# Création de variables #}
+
+{% set name = "Maxence" %}  {# <- crée une variable #}
+<h2>Hello {{ name }} </h2> {# <- afficher les contenue de la variable #}
+<h2>Hello {{ name ~ " " ~ name }} !</h2> {# <- chaine de concaténation #}
+
+
+{# Création d'un tableau #}
+
+{% set colors = ['red', 'purple', 'green', 'yellow'] %}
+
+
+{# Boucler sur un tableau  #}
+
+{% for color in colors %}
+
+    <div style="background-color: {{ color }} "> {{ color }} </div>
+    {# Usage de loop variables crée par for #}
+    {% if loop.first %}
+        <div>Première itération</div>
+    {% endif %}
+
+    {# index de l'élement #}
+    {# Affiche l'index du tableau sur l'element que nous sommes entrain d'itérer / la longueur du tableau #}
+    <div>index de l'element courant : {{ loop.index }} / {{ loop.length }}</div>
+
+    {% if loop.last %}
+        <div>Derrnière ittération</div>
+    {% endif %}
+
+{% else %}
+    {# Si tableau est vide alors on passe dans le else #}
+    <div>Pas d'elements</div>
+
+{% endfor %}
+
+
+{# Crée son object #}
+
+{% set series ={
+    title : "LOTR",
+    year : 2022,
+    platform : "Amazon"
+} %}
+
+<h2> {{ series.title }}</h2>
+
+
+
+{# Boucler sur un object #}
+
+{% for key, val in series %}
+    <div> {{ key  }} : {{ val }}</div>
+{% endfor %}
+
+{# Les filtres #}
+
+<div> {{ name | upper | lower | capitalize }} : {{ name | length }} lettres </div>
+<div> {{ colors | join("-") }}</div>
+<div> {{ "now" | date('Y-m-d') }} </div>
+
+
+{% endblock %}
+
+{% block title %} {{ parent() }} | Test {% endblock %}

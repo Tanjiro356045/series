@@ -5,5 +5,24 @@
 {# si je redéfinis le contenue, j'ecrase le contenue présent dans la base #}
 {% block title %} {{ parent()}} | Home {% endblock %}
 {% block body %}
-    <h1> Welcome to series !</h1>
+    <h1> Welcome to series !  {{  name  }} </h1>
+
+    <div> {{ name }}</div>
+
+
+    {#  desactive la protect XSS #}
+    <div> {{ name | raw }}</div>
+
+    {# Supprime complètement le code HTML #}
+    <div> {{ name | striptags }}</div>
+
+
+    <h2>Serie's detail </h2>
+
+    <ul>
+    {% for key, val in serie %}
+        <div> {{ key }} : {{ value }}</div>
+    {%endfor %}
+    </ul>
+
 {% endblock %}

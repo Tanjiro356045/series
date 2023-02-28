@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% form_theme serieForm 'view/formTheme/formTheme.html.twig' %}
+
+{% block title %}
+    {{ parent() }} |  Add
+{% endblock %}
+
+{% block body %}
+    <h2>Add a new serie !</h2>
+
+    {# déclenche l'affichage du formulaire #}
+    {#    {{ form(serieForm) }}#}
+
+    {# début du form #}
+    {{ form_start(serieForm) }}
+
+    <div class="machin">
+        {# découpage par champ #}
+        {{ form_label(serieForm.name) }}
+        {{ form_widget(serieForm.name) }}
+        {{ form_errors(serieForm.name) }}
+    </div>
+
+    {# affichage du reste du form #}
+    {{ form_rest(serieForm) }}
+
+    <button>Add serie !</button>
+    {# fin du formulaire #}
+    {{ form_end(serieForm) }}
+
+{% endblock %}

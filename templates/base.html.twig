@@ -15,6 +15,11 @@
 
 
     <body>
+
+ {% block styleCss %}
+
+ {% endblock %}
+
     <div class="container">
     <h1> <a href="{{ path('main_home')}}"> <img src="{{ asset('asset/images/logo.svg') }}" alt="Series | Home"> </a> </h1>
 
@@ -23,6 +28,7 @@
     </header>
         <main>
         {% block body %}{% endblock %}
+
         </main>
 
     <footer>
